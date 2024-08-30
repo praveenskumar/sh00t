@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.conf.urls import include, url
+from django.conf.urls import include
 from django.conf import settings
 from app import views
 from django.conf.urls.static import static, serve
@@ -15,7 +15,7 @@ urlpatterns = [
 ]
 
 if not settings.LIVE:
-    urlpatterns += [url(r'^static/(?P<path>.*)$', serve, {'document_root': settings.STATIC_ROOT})]
+    urlpatterns += [re_path(r'^static/(?P<path>.*)$', serve, {'document_root': settings.STATIC_ROOT})]
 
 # Print banner on the console when the server starts
 print(settings.BANNER)
